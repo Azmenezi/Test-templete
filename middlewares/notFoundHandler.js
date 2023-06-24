@@ -1,5 +1,6 @@
 module.exports = (req, res, next) => {
-  const err = new Error("Not Found");
-  err.status = 404;
-  next(err);
+  next({
+    status: 404,
+    message: "Page not found!",
+  });
 };

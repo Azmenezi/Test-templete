@@ -31,7 +31,7 @@ exports.createTemp = async (req, res, next) => {
 
 exports.updateTemp = async (req, res, next) => {
   try {
-    await Temp.findByIdAndUpdate(req.temp.id, req.body);
+    await req.temp.id.updateOne(req.body);
     return res.status(204).end();
   } catch (error) {
     return next(error);
@@ -40,7 +40,7 @@ exports.updateTemp = async (req, res, next) => {
 
 exports.deleteTemp = async (req, res, next) => {
   try {
-    await Temp.findByIdAndRemove({ _id: req.temp.id });
+    await req.temp.id.deleteOne();
     return res.status(204).end();
   } catch (error) {
     return next(error);
